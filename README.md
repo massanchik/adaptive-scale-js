@@ -76,6 +76,6 @@ For demo look at the examples directory.
 
 or
 
-JSFiddle
+[JSFiddle](https://jsfiddle.net/76fzpjmx/)
 
-`https://jsfiddle.net/76fzpjmx/`
+### !HAPPY SCALING!
