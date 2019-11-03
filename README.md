@@ -13,7 +13,9 @@ If policy is not specified then no scale is applied.
 ## Install
 
 #### NPM:
-`npm i adaptive-scale`
+```Bash
+npm i adaptive-scale
+```
 
 #### CDN:
 Browser version. 
@@ -22,7 +24,9 @@ Available as a global variable AS.
 
 Example: AS.POLICY, AS.Size, AS.getScaledRect
 
-`<script src="https://cdn.jsdelivr.net/npm/adaptive-scale@1.0.0/_bundles/adaptive-scale.js"></script>`
+```HTML
+<script src="https://cdn.jsdelivr.net/npm/adaptive-scale@1.0.0/_bundles/adaptive-scale.js"></script>
+```
 
 ## Usage
 
