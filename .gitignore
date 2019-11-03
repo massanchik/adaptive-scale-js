@@ -1,0 +1,9 @@
+.idea
+.code
+*.xml
+*.iml
+
+node_modules
+lib
+lib-esm
+_bundles

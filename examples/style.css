@@ -1,0 +1,36 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    width: 100vw;
+    height: 100vh;
+}
+canvas {
+    display: block;
+}
+button {
+    padding: 5px;
+    font-size: 20px;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+button:hover {
+    cursor: pointer;
+    background-color: rgba(255, 100, 100, 0.5);
+}
+button.active {
+    background-color: rgba(255, 50, 50, 0.5);
+}
+#controls {
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 10px;
+    position: absolute;
+    width: 250px;
+    right: 0;
+    top: 0;
+}
+#controls > div {
+    width: 100%;
+    margin: 5px 0;
+}

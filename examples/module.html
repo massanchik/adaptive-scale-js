@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Adaptive Scale Examples</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="controls"></div>
+<canvas id="canvas"></canvas>
+<script type="module">
+    import {POLICY, Size, getScaledRect} from '../lib-esm/index.js'
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+    const image = new Image();
+
+    let rect;
+    let options = {
+        container: new Size(window.innerWidth, window.innerHeight),
+        target: new Size(image.width, image.height),
+    };
+
+    drawControls();
+
+    const canvasResize = () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    };
+
+    const draw = () => {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        options.container.width = canvas.width;
+        options.container.height = canvas.height;
+        rect = getScaledRect(options);
+        ctx.drawImage(image, rect.x, rect.y, rect.width, rect.height);
+    };
+
+
+    canvasResize();
+
+    window.addEventListener('resize', function(event){
+        canvasResize();
+        draw()
+    });
+
+    image.src = './cat.jpg';
+    image.onload = () => {
+        options.target.width = image.width;
+        options.target.height = image.height;
+
+        draw();
+    };
+
+    function drawControls() {
+        let controls = document.getElementById('controls');
+        let markup = control('No Policy', true);
+        for (let p in POLICY) {
+            if (String(p).length > 1) {
+                markup += control(p)
+            }
+        }
+
+        controls.innerHTML = markup;
+
+        for (let c of document.getElementsByClassName('control')) {
+            c.addEventListener('click', function(event){
+                if (event.target.innerText === 'No Policy') {
+                    options.policy = null;
+                } else {
+                    options.policy = POLICY[event.target.innerText];
+                }
+                draw();
+
+                let active = document.querySelector('button.active');
+                if (active) {
+                    active.className = 'control';
+                }
+
+                event.target.className = 'control active';
+            });
+        }
+
+        function control(name, isActive) {
+            return `
+<div><button class="control ${isActive && 'active'}">${name}</button></div>
+        `;
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+{
+  "name": "adaptive-scale",
+  "version": "1.0.0",
+  "description": "This small library can scale any size according to other size.",
+  "main": "src/index.ts",
+  "scripts": {
+    "clean": "shx rm -rf _bundles lib lib-esm",
+    "build": "npm run clean && tsc && tsc -m es6 --outDir lib-esm && webpack --mode=production",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/massanchik/adaptive-scale-js.git"
+  },
+  "keywords": [
+    "adaptive",
+    "scale",
+    "image",
+    "resize",
+    "rect",
+    "rectangle",
+    "border",
+    "noborder",
+    "aspect",
+    "ratio"
+  ],
+  "author": "TreeNode <ondaemon@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/massanchik/adaptive-scale-js/issues"
+  },
+  "homepage": "https://github.com/massanchik/adaptive-scale-js#readme",
+  "devDependencies": {
+    "shx": "^0.3.2",
+    "ts-loader": "^6.2.1",
+    "typescript": "^3.6.4",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10"
+  }
+}

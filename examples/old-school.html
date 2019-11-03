@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Adaptive Scale Examples</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="controls"></div>
+<canvas id="canvas"></canvas>
+<script src="../_bundles/adaptive-scale.js"></script>
+<script>
+    (function() {
+        var canvas = document.getElementById('canvas');
+        var ctx = canvas.getContext('2d');
+        var image = new Image();
+        var rect;
+
+        var options = {
+            container: new AS.Size(window.innerWidth, window.innerHeight),
+            target: new AS.Size(image.width, image.height),
+        };
+
+
+        canvasResize();
+        drawControls();
+
+        window.addEventListener('resize', function(event){
+            canvasResize();
+            draw()
+        });
+
+        image.src = './cat.jpg';
+        image.onload = function () {
+            options.target.width = image.width;
+            options.target.height = image.height;
+
+            draw();
+        };
+
+        function canvasResize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            options.container.width = canvas.width;
+            options.container.height = canvas.height;
+            rect = AS.getScaledRect(options);
+            ctx.drawImage(image, rect.x, rect.y, rect.width, rect.height);
+        }
+
+        function drawControls() {
+            let controls = document.getElementById('controls');
+            let markup = control('No Policy', true);
+            for (let p in AS.POLICY) {
+                if (String(p).length > 1) {
+                    markup += control(p)
+                }
+            }
+
+            controls.innerHTML = markup;
+
+            for (let c of document.getElementsByClassName('control')) {
+                c.addEventListener('click', function(event){
+                    if (event.target.innerText === 'No Policy') {
+                        options.policy = null;
+                    } else {
+                        options.policy = AS.POLICY[event.target.innerText];
+                    }
+                    draw();
+
+                    let active = document.querySelector('button.active');
+                    if (active) {
+                        active.className = 'control';
+                    }
+
+                    event.target.className = 'control active';
+                });
+            }
+
+            function control(name, className) {
+                return `
+<div><button class="control ${isActive && 'active'}">${name}</button></div>
+        `;
+            }
+        }
+    })();
+</script>
+</body>
+</html>
