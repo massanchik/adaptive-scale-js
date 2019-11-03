@@ -26,7 +26,7 @@ Example: AS.POLICY, AS.Size, AS.getScaledRect
 
 ## Usage
 
-```ecmascript 6
+```javascript
 // TypeScript
 // import {POLICY, Size, getScaledRect} from 'adaptive-scale';
 
