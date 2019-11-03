@@ -69,3 +69,9 @@ image.height = rect.height;
 
 ### Demo
 For demo look at the examples directory.
+
+or
+
+JSFiddle
+
+`https://jsfiddle.net/76fzpjmx/`
