@@ -1,6 +1,9 @@
 # Adaptive Scale
 This small library can scale any size according to other size with multiple scale policies.
 
+Useful for image, canvas, canvas elements or any other things that needs to use some 
+resizing|scaling behavior depending on it's container size.
+
 ### Currently Supported Scale Policies
 If policy is not specified then no scale is applied.
 
