@@ -68,9 +68,13 @@ let options = {
 let rect = getScaledRect(options);
 
 // apply calculated rectangle
+// horizontal center inside a window
 image.x = rect.x;
+// vertical center inside a window
 image.y = rect.y;
+// new scaled width
 image.width = rect.width;
+// new scaled height
 image.height = rect.height;
 ```
 
